@@ -52,9 +52,7 @@ public class Goldbach {
                     }else if(num3<num2){
                         break;
                     }else if(isPrime[num3]){
-                        if(num2<=num3){
-                            System.out.println(num1+" "+num2+" "+num3);
-                        }
+                        System.out.println(num1+" "+num2+" "+num3);
                         flag=true;
                         break;
                     }
