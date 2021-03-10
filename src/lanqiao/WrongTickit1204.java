@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * @Author:LiuJX
  * @Date:2021/3/10
- * @Description:
+ * @Description: 这题的精华在输入部分
  */
 public class WrongTickit1204 {
     private static final int MAX=100000;
@@ -17,23 +17,32 @@ public class WrongTickit1204 {
 
         Scanner scanner=new Scanner(System.in);
         int n=scanner.nextInt();
-        while(scanner.hasNextInt()){
-            int currentNum=scanner.nextInt();
-            nums[currentNum]++;
+        String s[]=new String[n];
+        String ss[][]=new String[n][];
+
+        scanner.nextLine();
+        for(int i=0;i<n;i++){
+            s[i]=scanner.nextLine();
+            ss[i]=s[i].split(" ");
         }
 
-        boolean flag=false;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<ss[i].length;j++){
+                if(!ss[i][j].equals(" ")){
+                    nums[Integer.valueOf(ss[i][j])]++;
+                }
+
+            }
+        }
+
         for(int i=0;i<=MAX;i++){
-            if(nums[i]>0 && !flag){
-                flag=true;
-                continue;
+            if(nums[i]>1){
+                repeatedNum=i;
             }
 
-            if(flag){
-                if(nums[i]==0){
+            if(nums[i]==0 && i!=0 && i!=MAX){
+                if(nums[i-1]>0 && nums[i+1]>0){
                     emptyNum=i;
-                }else if(nums[i]>1){
-                    repeatedNum=i;
                 }
             }
         }
